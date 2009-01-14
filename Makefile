@@ -1,0 +1,29 @@
+PROGRAM=parbat
+
+PROGRAM_SOURCES = Parbat.cpp \
+		  OverviewWindow.cpp
+
+PROGRAM_OBJECTS = $(patsubst %.cpp, %.o, ${PROGRAM_SOURCES})
+
+PKG_CONFIG_MODULES=gtkmm-2.4 libglademm-2.4
+
+CXX=g++
+CXX_FLAGS=-g -Wall
+CXX_FLAGS+=`pkg-config ${PKG_CONFIG_MODULES} --cflags`
+LD_FLAGS=`pkg-config ${PKG_CONFIG_MODULES} --libs`
+
+all: ${PROGRAM}
+
+${PROGRAM}: ${PROGRAM_OBJECTS}
+	${CXX} ${CXX_FLAGS} -o ${PROGRAM} ${PROGRAM_OBJECTS} ${LD_FLAGS}
+
+%.o: %.cpp %.h
+	${CXX} -c ${CXX_FLAGS} -o ${@} ${<}
+
+clean:
+	@rm -f -v *.o
+
+distclean: clean
+	@rm -f -v ${PROGRAM}
+	@rm -f -v *~
+	@rm -f -v \*\#
