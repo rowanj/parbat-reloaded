@@ -22,6 +22,9 @@
 // Boost.org
 
 
+// GDAL
+#include <gdal_priv.h>
+
 // gtkmm (GTK+ C++ bindings, a.k.a. GTK--)
 #include <gtkmm.h>
 #include <libglademm.h>

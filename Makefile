@@ -9,13 +9,13 @@ PKG_CONFIG_MODULES=gtkmm-2.4 libglademm-2.4
 
 CXX=g++
 CXX_FLAGS=-g -Wall
-CXX_FLAGS+=`pkg-config ${PKG_CONFIG_MODULES} --cflags`
-LD_FLAGS=`pkg-config ${PKG_CONFIG_MODULES} --libs`
+CXX_FLAGS+=`pkg-config ${PKG_CONFIG_MODULES} --cflags` `gdal-config --cflags`
+LD_FLAGS=-g -Wall `pkg-config ${PKG_CONFIG_MODULES} --libs` `gdal-config --libs`
 
 all: ${PROGRAM}
 
 ${PROGRAM}: ${PROGRAM_OBJECTS}
-	${CXX} ${CXX_FLAGS} -o ${PROGRAM} ${PROGRAM_OBJECTS} ${LD_FLAGS}
+	${CXX} -o ${PROGRAM} ${PROGRAM_OBJECTS} ${LD_FLAGS}
 
 %.o: %.cpp %.h
 	${CXX} -c ${CXX_FLAGS} -o ${@} ${<}

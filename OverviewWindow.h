@@ -10,6 +10,14 @@ class OverviewWindow
  public:
   OverviewWindow();
   virtual ~OverviewWindow();
+
+  Gtk::Window* GetWindowPtr();
+
+ private:
+  void MnuAboutClicked();
+
+
+  Gtk::Window* m_pWindow;
 };
 
 #endif
