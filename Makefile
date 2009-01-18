@@ -1,7 +1,8 @@
 PROGRAM=parbat
 
 PROGRAM_SOURCES = Parbat.cpp \
-		  OverviewWindow.cpp
+		  OverviewWindow.cpp \
+		  AboutDialog.cpp
 
 PROGRAM_OBJECTS = $(patsubst %.cpp, %.o, ${PROGRAM_SOURCES})
 
