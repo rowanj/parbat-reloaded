@@ -9,7 +9,7 @@
 
 //----------------------------------------------------------------------------
 AboutDialog::AboutDialog(BaseObjectType* cobject,
-			 const Glib::RefPtr<Gnome::Glade::Xml>& refGlade) :
+			 const glade_ref_t& refGlade) :
   Gtk::Dialog(cobject),
   m_pBtnClose(NULL)
 {
