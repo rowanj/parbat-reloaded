@@ -25,7 +25,6 @@ class ParbatApp
 
 // Alias for ParbatApp::GetInstance()
 ParbatApp& GetApp();
-
-Glib::RefPtr<Gnome::Glade::Xml> GetRefXML();
+glade_ref_t GetGladeRef();
 
 #endif

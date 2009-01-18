@@ -11,7 +11,7 @@ ParbatApp* ParbatApp::s_pInstance(NULL);
 
 namespace {
   // We use Glade to load the user interface from XML
-  Glib::RefPtr<Gnome::Glade::Xml> g_RefXML;
+  glade_ref_t g_refGlade;
 }
 
 //----------------------------------------------------------------------------
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 {
   Gtk::Main kit(argc, argv);
 
-  g_RefXML = Gnome::Glade::Xml::create("parbat3d-ui.glade");
+  g_refGlade = Gnome::Glade::Xml::create("parbat3d-ui.glade");
 
   GetApp();
 
@@ -28,9 +28,9 @@ int main(int argc, char *argv[])
 
 
 //----------------------------------------------------------------------------
-Glib::RefPtr<Gnome::Glade::Xml> GetRefXML()
+glade_ref_t GetGladeRef()
 {
-  return g_RefXML;
+  return g_refGlade;
 }
 
 //----------------------------------------------------------------------------
@@ -54,10 +54,9 @@ ParbatApp& ParbatApp::GetInstance()
 ParbatApp::ParbatApp() :
   m_pOverviewWindow(NULL)
 {
+  GetGladeRef()->get_widget_derived("OverviewWindow", m_pOverviewWindow);
 
-  m_pOverviewWindow = new OverviewWindow();
-
-  Gtk::Main::run(*(m_pOverviewWindow->GetWindowPtr()));
+  Gtk::Main::run(*m_pOverviewWindow);
 }
 
 //----------------------------------------------------------------------------

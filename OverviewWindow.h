@@ -5,19 +5,15 @@
 | Copyright 2009 Rowan James
 \****************************************************************************/
 
-class OverviewWindow
+class OverviewWindow: public Gtk::Window
 {
  public:
-  OverviewWindow();
+  OverviewWindow(BaseObjectType* cobject,
+		 const glade_ref_t& refGlade);
   virtual ~OverviewWindow();
-
-  Gtk::Window* GetWindowPtr();
 
  private:
   void MnuAboutClicked();
-
-
-  Gtk::Window* m_pWindow;
 };
 
 #endif
