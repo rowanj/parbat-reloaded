@@ -31,6 +31,9 @@
 
 // Other
 
+// A bunch of typedefs for shorthand
+#include "ParbatTypes.h"
+using namespace NParbatTypes;
 
 using namespace std;
 
