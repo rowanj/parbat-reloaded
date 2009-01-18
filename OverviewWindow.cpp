@@ -3,9 +3,10 @@
 \****************************************************************************/
 #include "PchApp.h"
 
-#include "OverviewWindow.h"
-
+#include "AboutDialog.h"
 #include "Parbat.h"
+
+#include "OverviewWindow.h"
 
 //----------------------------------------------------------------------------
 OverviewWindow::OverviewWindow() :
@@ -37,8 +38,7 @@ Gtk::Window* OverviewWindow::GetWindowPtr()
 //----------------------------------------------------------------------------
 void OverviewWindow::MnuAboutClicked()
 {
-  Gtk::Dialog* pDialog(NULL);
-  GetRefXML()->get_widget("AboutDialog", pDialog);
-  pDialog->show();
-  //  cout << "blarg!" << endl;
+  AboutDialog* pAbout(NULL);
+  GetRefXML()->get_widget_derived("AboutDialog", pAbout);
+  pAbout->show();
 }

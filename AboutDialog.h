@@ -5,16 +5,17 @@
 | Copyright 2009 Rowan James
 \****************************************************************************/
 
-class AboutDialog
+class AboutDialog: public Gtk::Dialog
 {
  public:
-  AboutDialog();
+  AboutDialog(BaseObjectType* cobject,
+	      const Glib::RefPtr<Gnome::Glade::Xml>& refGlade);
   virtual ~AboutDialog();
 
  private:
   void BtnCloseClick();
 
-  Gtk::Dialog* m_pDialog;
+  Gtk::Button* m_pBtnClose;
 };
 
 #endif
