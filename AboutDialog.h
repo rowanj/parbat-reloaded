@@ -9,7 +9,7 @@ class AboutDialog: public Gtk::Dialog
 {
  public:
   AboutDialog(BaseObjectType* cobject,
-	      const Glib::RefPtr<Gnome::Glade::Xml>& refGlade);
+	      const glade_ref_t& refGlade);
   virtual ~AboutDialog();
 
  private:
