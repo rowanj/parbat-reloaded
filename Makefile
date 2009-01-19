@@ -18,10 +18,14 @@ all: ${PROGRAM}
 ${PROGRAM}: ${PROGRAM_OBJECTS}
 	${CXX} -o ${PROGRAM} ${PROGRAM_OBJECTS} ${LD_FLAGS}
 
-%.o: %.cpp %.h
+PchApp.h.gch: PchApp.h
+	${CXX} -c ${CXX_FLAGS} -o ${@} ${<}
+
+%.o: %.cpp %.h PchApp.h.gch
 	${CXX} -c ${CXX_FLAGS} -o ${@} ${<}
 
 clean:
+	@rm -f -v PchApp.h.gch
 	@rm -f -v *.o
 
 distclean: clean
