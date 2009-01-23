@@ -25,10 +25,10 @@ PchApp.h.gch: PchApp.h
 	${CXX} -c ${CXX_FLAGS} -o ${@} ${<}
 
 clean:
-	@rm -f -v PchApp.h.gch
 	@rm -f -v *.o
 
 distclean: clean
+	@rm -f -v PchApp.h.gch
 	@rm -f -v ${PROGRAM}
 	@rm -f -v *~
 	@rm -f -v \*\#
