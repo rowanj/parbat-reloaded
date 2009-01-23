@@ -3,20 +3,19 @@
 \****************************************************************************/
 #include "PchApp.h"
 
-#include "AboutDialog.h"
-#include "Parbat.h"
-
 #include "OverviewWindow.h"
 
+#include "AboutDialog.h"
 #include "GtkHelp.h"
+#include "Parbat.h"
 
 //----------------------------------------------------------------------------
 OverviewWindow::OverviewWindow(BaseObjectType* cobject,
 			       const glade_ref_t& refGlade) :
   Gtk::Window(cobject)
 {
-  Connect("about1", *this, &OverviewWindow::MnuAboutClicked);
-  Connect("quit1", *this, &OverviewWindow::MnuQuitClicked);
+  ConnectMenuItem("about1", *this, &OverviewWindow::MnuAboutClicked);
+  ConnectMenuItem("quit1", *this, &OverviewWindow::MnuQuitClicked);
 }
 
 //----------------------------------------------------------------------------

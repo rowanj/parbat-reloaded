@@ -14,8 +14,6 @@ class AboutDialog: public Gtk::Dialog
 
  private:
   void BtnCloseClick();
-
-  Gtk::Button* m_pBtnClose;
 };
 
 #endif
