@@ -1,6 +1,6 @@
 #pragma once
-#ifndef GtkHelpH
-#define GtkHelpH
+#ifndef GtkConnectH
+#define GtkConnectH
 /****************************************************************************\
 | Copyright 2009 Rowan James
 \****************************************************************************/

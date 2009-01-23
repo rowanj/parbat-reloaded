@@ -5,7 +5,7 @@
 
 #include "AboutDialog.h"
 
-#include "GtkHelp.h"
+#include "GtkConnect.h"
 #include "Parbat.h"
 
 //----------------------------------------------------------------------------
