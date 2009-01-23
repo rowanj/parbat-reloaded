@@ -14,6 +14,7 @@ class OverviewWindow: public Gtk::Window
 
  private:
   void MnuAboutClicked();
+  void MnuQuitClicked();
 };
 
 #endif
