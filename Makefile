@@ -16,7 +16,7 @@ LD_FLAGS=-g -Wall `pkg-config ${PKG_CONFIG_MODULES} --libs` `gdal-config --libs`
 all: .check_makefile ${PROGRAM}
 
 .check_makefile: Makefile
-	@echo "Makefile has change, forcing re-build"
+	@echo "Makefile has changed, forcing re-build"
 	@make clean
 	@touch ${@}
 
