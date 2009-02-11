@@ -13,7 +13,11 @@ CXX_FLAGS=-g -Wall
 CXX_FLAGS+=`pkg-config ${PKG_CONFIG_MODULES} --cflags` `gdal-config --cflags`
 LD_FLAGS=-g -Wall `pkg-config ${PKG_CONFIG_MODULES} --libs` `gdal-config --libs`
 
-all: ${PROGRAM}
+all: .check_makefile ${PROGRAM}
+
+.check_makefile: Makefile
+	make clean
+	touch ${@}
 
 ${PROGRAM}: ${PROGRAM_OBJECTS}
 	${CXX} -o ${PROGRAM} ${PROGRAM_OBJECTS} ${LD_FLAGS}
