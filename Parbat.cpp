@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 {
   Gtk::Main kit(argc, argv);
 
-  g_refGlade = Gnome::Glade::Xml::create("parbat3d-ui.glade");
+  g_refGlade = Gnome::Glade::Xml::create("Parbat.glade");
 
   GetApp();
 
