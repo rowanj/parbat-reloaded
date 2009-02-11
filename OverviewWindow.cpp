@@ -16,6 +16,11 @@ OverviewWindow::OverviewWindow(BaseObjectType* cobject,
 {
   ConnectMenuItem("about1", *this, &OverviewWindow::MnuAboutClicked);
   ConnectMenuItem("quit1", *this, &OverviewWindow::MnuQuitClicked);
+
+//  ConnectExposeEvent("OverviewDrawingArea", *this, &OverviewWindow::DrawEvent);
+  Gtk::DrawingArea* pDrawingArea(NULL);
+  GetGladeRef()->get_widget("OverviewDrawingArea", pDrawingArea);
+  pDrawingArea->signal_expose_event().connect(sigc::mem_fun(*this, &OverviewWindow::DrawEvent));
 }
 
 //----------------------------------------------------------------------------
@@ -40,4 +45,17 @@ void OverviewWindow::MnuQuitClicked()
 
   // Quit
   Gtk::Main::quit();
+}
+
+//-----------------------------------------------------------------------------
+bool OverviewWindow::DrawEvent(GdkEventExpose*)
+{
+  DrawOverview();
+  return true;
+}
+
+//-----------------------------------------------------------------------------
+void OverviewWindow::DrawOverview()
+{
+  cerr << "BLARG!" << endl;
 }
