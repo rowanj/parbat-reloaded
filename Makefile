@@ -36,4 +36,4 @@ distclean: clean
 	@rm -f -v PchApp.h.gch
 	@rm -f -v ${PROGRAM}
 	@rm -f -v *~
-	@rm -f -v \*\#
+	@rm -f -v \#\*\#
