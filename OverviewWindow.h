@@ -18,6 +18,10 @@ class OverviewWindow: public Gtk::Window
   bool DrawEvent(GdkEventExpose*);
 
   Gtk::DrawingArea* m_pDrawingArea;
+
+  int m_iOverviewWidth;
+  int m_iOverviewHeight;
+  guint8* m_aOverviewPixels;
 };
 
 #endif

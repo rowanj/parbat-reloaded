@@ -6,7 +6,7 @@ PROGRAM_SOURCES = Parbat.cpp \
 
 PROGRAM_OBJECTS = $(patsubst %.cpp, %.o, ${PROGRAM_SOURCES})
 
-PKG_CONFIG_MODULES=gtkmm-2.4 libglademm-2.4 cairomm-1.0
+PKG_CONFIG_MODULES=gtkmm-2.4 libglademm-2.4 cairomm-1.0 glibmm-2.4
 
 CXX=g++
 CXX_FLAGS=-g -Wall

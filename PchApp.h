@@ -34,7 +34,10 @@
 // and Cairo for drawing bitmaps
 #include <cairomm/context.h>
 
+#include <glibmm.h>
+
 // Other
+#include <cassert>
 
 // A bunch of typedefs for shorthand
 #include "ParbatTypes.h"
