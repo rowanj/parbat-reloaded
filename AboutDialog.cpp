@@ -13,7 +13,7 @@ AboutDialog::AboutDialog(BaseObjectType* cobject,
 			 const glade_ref_t& refGlade) :
   Gtk::Dialog(cobject)
 {
-  ConnectButton("CloseButton", *this, &AboutDialog::BtnCloseClick);
+  ConnectClicked<Gtk::Button>("CloseButton", *this, &AboutDialog::BtnCloseClick);
 }
 
 //----------------------------------------------------------------------------

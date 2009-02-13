@@ -9,17 +9,24 @@
 #include "GtkConnect.h"
 #include "Parbat.h"
 
+void Permute(guint8* pData, int iWidth, int iHeight) {
+  for (int i = 0; i < iWidth * iHeight * 4; ++i) {
+    pData[i] += 64;
+  }
+}
+
 //----------------------------------------------------------------------------
 OverviewWindow::OverviewWindow(BaseObjectType* cobject,
 			       const glade_ref_t& refGlade) :
   Gtk::Window(cobject),
   m_pDrawingArea(NULL)
 {
-  ConnectMenuItem("about1", *this, &OverviewWindow::MnuAboutClicked);
-  ConnectMenuItem("quit1", *this, &OverviewWindow::MnuQuitClicked);
+  ConnectActivate<Gtk::MenuItem>("about1", *this, &OverviewWindow::MnuAboutClicked);
+  ConnectActivate<Gtk::MenuItem>("quit1", *this, &OverviewWindow::MnuQuitClicked);
+
+  ConnectExposeEvent<Gtk::DrawingArea>("OverviewDrawingArea", *this, &OverviewWindow::DrawEvent);
 
   GetGladeRef()->get_widget("OverviewDrawingArea", m_pDrawingArea);
-  m_pDrawingArea->signal_expose_event().connect(sigc::mem_fun(*this, &OverviewWindow::DrawEvent));
 
   m_iOverviewWidth = m_pDrawingArea->get_width();
   m_iOverviewHeight = m_pDrawingArea->get_height();
@@ -35,6 +42,9 @@ OverviewWindow::OverviewWindow(BaseObjectType* cobject,
       m_aOverviewPixels[iBaseIndex + 3] = 255;
     }
   }
+
+  opixbuf = 
+    Gdk::Pixbuf::create_from_data(m_aOverviewPixels, Gdk::COLORSPACE_RGB, true, 8, m_iOverviewWidth, m_iOverviewHeight, m_iOverviewWidth * 4);
 }
 
 //----------------------------------------------------------------------------
@@ -68,17 +78,13 @@ bool OverviewWindow::DrawEvent(GdkEventExpose* event)
 {
   Glib::RefPtr<Gdk::Window> oWindow = m_pDrawingArea->get_window();
   if (oWindow) {
-    Gtk::Allocation oAllocation = m_pDrawingArea->get_allocation();
-    const int width = oAllocation.get_width();
-    const int height = oAllocation.get_height();
-
     Cairo::RefPtr<Cairo::Context> cr = oWindow->create_cairo_context();
-
-    Glib::RefPtr<Gdk::Pixbuf> opixbuf =
-      Gdk::Pixbuf::create_from_data(m_aOverviewPixels, Gdk::COLORSPACE_RGB, true, 8, width, height, width * 4);
-
+    
     Gdk::Cairo::set_source_pixbuf(cr, opixbuf, 0, 0);
+
     cr->paint();
+
+    Permute(m_aOverviewPixels, 200, 200);
   }
 
   return true;

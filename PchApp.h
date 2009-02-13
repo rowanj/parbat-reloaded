@@ -31,12 +31,14 @@
 // we also use libglade to load the interface from XML at runtime
 #include <libglademm.h>
 
-// and Cairo for drawing bitmaps
+// Cairo for drawing bitmaps
 #include <cairomm/context.h>
 
+// And glib for various things (like types like guint8)
 #include <glibmm.h>
 
 // Other
+// C++ variants of standard C libraries
 #include <cassert>
 
 // A bunch of typedefs for shorthand

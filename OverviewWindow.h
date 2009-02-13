@@ -22,6 +22,7 @@ class OverviewWindow: public Gtk::Window
   int m_iOverviewWidth;
   int m_iOverviewHeight;
   guint8* m_aOverviewPixels;
+  Glib::RefPtr<Gdk::Pixbuf> opixbuf;
 };
 
 #endif
