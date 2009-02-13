@@ -17,7 +17,7 @@ class OverviewWindow: public Gtk::Window
   void MnuQuitClicked();
   bool DrawEvent(GdkEventExpose*);
 
-  void DrawOverview();
+  Gtk::DrawingArea* m_pDrawingArea;
 };
 
 #endif
