@@ -28,9 +28,6 @@
 // gtkmm (GTK+ C++ bindings, a.k.a. GTK--)
 #include <gtkmm.h>
 
-// we also use libglade to load the interface from XML at runtime
-#include <libglademm.h>
-
 // Cairo for drawing bitmaps
 #include <cairomm/context.h>
 

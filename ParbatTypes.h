@@ -6,7 +6,7 @@
 \****************************************************************************/
 
 namespace NParbatTypes {
-  typedef Glib::RefPtr<Gnome::Glade::Xml> glade_ref_t;
+  typedef Glib::RefPtr<Gtk::Builder> glade_ref_t;
 }
 
 #endif
